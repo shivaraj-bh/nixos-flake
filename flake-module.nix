@@ -131,7 +131,7 @@ in
       nixos-flake.lib = rec {
         inherit specialArgsFor;
 
-        mkLinuxSystem = mod: inputs.nixpkgs.lib.nixosSystem {
+        mkLinuxSystem = { mod, nixpkgs ? inputs.nixpkgs } : nixpkgs.lib.nixosSystem {
           # Arguments to pass to all modules.
           specialArgs = specialArgsFor.nixos;
           modules = [ mod ];
